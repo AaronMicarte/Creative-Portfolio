@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaron Micarte - Creative Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="assets/FileIcon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#0A0A0A',
+                        accent: '#8A0303',
+                        text: '#E8E8E8',
+                        dim: '#333333'
+                    },
+                    fontFamily: {
+                        display: ['"Archivo Black"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        #boot-screen {
+            transition: opacity 1s ease;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-bg text-text font-mono antialiased overflow-x-hidden">
+
+    <div class="grain-overlay"></div>
+
+    <!-- Entry Screen -->
+    <div id="boot-screen" class="fixed inset-0 z-50 bg-black flex items-center justify-center flex-col">
+        <p class="text-sm text-white/50 mb-4">ENTERING THE GALLERY...</p>
+        <p class="text-4xl font-display text-white">AARON MICARTE</p>
+        <div class="w-full max-w-xs h-1 bg-white/20 mt-5">
+            <div id="boot-bar" class="h-1 bg-accent w-0"></div>
+        </div>
+        <p id="boot-text" class="text-xs text-white/50 mt-2">0%</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed right-5 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-6 hidden md:flex">
+        <a href="#about" class="text-xs text-text/50 hover:text-accent transition">[01] ARTIST</a>
+        <a href="#gallery" class="text-xs text-text/50 hover:text-accent transition">[02] EXHIBIT</a>
+        <a href="#contact" class="text-xs text-text/50 hover:text-accent transition">[03] CONTACT</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="h-screen w-full flex items-center justify-center relative overflow-hidden">
+        <div
+            class="absolute text-[20vw] font-display text-white/10 leading-none tracking-tighter select-none pointer-events-none">
+            DREAMS
+        </div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="font-display text-6xl md:text-9xl leading-[0.85]">
+                A SPACE<br>FOR<br>
+                <span class="text-accent">IMAGINATION.</span>
+            </h1>
+            <p class="mt-8 text-sm tracking-widest text-text/60">CURATED VISUAL STORIES</p>
+        </div>
+    </section>
+
+    <!-- ABOUT / ARTIST STATEMENT -->
+    <section id="about" class="min-h-screen w-full px-6 md:px-20 py-40 border-t border-white/10">
+        <h1 class="font-display text-6xl md:text-9xl leading-[0.85] scroll-reveal">
+            WELCOME<br>TO MY<br>
+            <span class="text-accent">WORLD.</span>
+        </h1>
+        <div class="mt-20 max-w-4xl border-l-4 border-accent pl-8 scroll-reveal">
+            <p class="text-xl md:text-3xl leading-relaxed text-text/80">
+                Hello, friend. I am Aaron. I create beautiful, moody, and surreal worlds.
+                I use the digital canvas to express emotions, capture fleeting moments, and build places that don't
+                exist.
+                I hope you enjoy your time here.
+            </p>
+            <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-text/60">
+                <div class="border border-white/20 p-4">
+                    <p class="text-5xl font-display text-accent">∞</p>
+                    <p class="mt-2">CREATIVITY</p>
+                </div>
+                <div class="border border-white/20 p-4">
+                    <p class="text-5xl font-display text-accent">10</p>
+                    <p class="mt-2">PIECES</p>
+                </div>
+                <div class="border border-white/20 p-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-12 h-12 text-accent">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z" />
+                    </svg>
+                    <p class="mt-2">EMOTION</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE BRUTALIST STAGGERED WALL (Clean 2-Column Grid) -->
+    <section id="gallery" class="w-full px-4 md:px-10 py-20 border-t border-white/10">
+        <h1 class="font-display text-6xl md:text-9xl text-white/10 leading-none mb-10">THE WALL</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+            <!-- 01 / COLOSSUS -->
+            <div class="group">
+                <div class="overflow-hidden border border-white/20">
+                    <img src="assets/bear.jpeg"
+                        class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition duration-500"
+                        alt="Bear">
+                </div>
+                <div class="bg-accent text-black p-3 mt-0">
+                    <h2 class="font-display text-2xl md:text-4xl leading-none">01 / COLOSSUS</h2>
+                </div>
+            </div>
+
+            <!-- 02 / RELIC (Staggered offset) -->
+            <div class="group md:mt-40">
+                <div class="overflow-hidden border border-white/20">
+                    <img src="assets/concretedeer.jpeg"
+                        class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition duration-500"
+                        alt="Deer">
+                </div>
+                <div class="bg-accent text-black p-3 mt-0">
+                    <h2 class="font-display text-2xl md:text-4xl leading-none">02 / RELIC</h2>
+                </div>
+            </div>
+
+            <!-- 03 / MAMMOTH -->
+            <div class="group">
+                <div class="overflow-hidden border border-white/20">
+                    <img src="assets/elephant.jpeg"
+                        class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition duration-500"
+                        alt="Elephant">
+                </div>
+                <div class="bg-accent text-black p-3 mt-0">
+                    <h2 class="font-display text-2xl md:text-4xl leading-none">03 / MAMMOTH</h2>
+                </div>
+            </div>
+
+            <!-- 04 / STALKER (Staggered offset) -->
+            <div class="group md:mt-40">
+                <div class="overflow-hidden border border-white/20">
+                    <img src="assets/humanbat.jpeg"
+                        class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition duration-500"
+                        alt="Bat">
+                </div>
+                <div class="bg-accent text-black p-3 mt-0">
+                    <h2 class="font-display text-2xl md:text-4xl leading-none">04 / STALKER</h2>
+                </div>
+            </div>
+
+            <!-- 05 / CRAWLER -->
+            <div class="group">
+                <div class="overflow-hidden border border-white/20">
+                    <img src="assets/humanoidcockroach.jpeg"
+                        class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition duration-500"
+                        alt="Trap">
+                </div>
+                <div class="bg-accent text-black p-3 mt-0">
+                    <h2 class="font-display text-2xl md:text-4xl leading-none">05 / CRAWLER</h2>
+                </div>
+            </div>
+
+            <!-- 06 / MANTIS -->
+            <div class="group md:mt-40">
+                <div class="overflow-hidden border border-white/20">
+                    <img src="assets/mantis.jpeg"
+                        class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition duration-500"
+                        alt="Manris">
+                </div>
+                <div class="bg-accent text-black p-3 mt-0">
+                    <h2 class="font-display text-2xl md:text-4xl leading-none">06 / MANTIS</h2>
+                </div>
+            </div>
+
+            <!-- 07 / VOID (VIDEO) -->
+            <div class="group">
+                <div class="overflow-hidden border border-white/20">
+                    <video src="assets/void.mp4"
+                        class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition duration-500"
+                        autoplay muted loop playsinline></video>
+                </div>
+                <div class="bg-accent text-black p-3 mt-0">
+                    <h2 class="font-display text-2xl md:text-4xl leading-none">07 / VOID</h2>
+                </div>
+            </div>
+
+            <!-- 08 / MIRAGE (Staggered offset) -->
+            <div class="group md:mt-40">
+                <div class="overflow-hidden border border-white/20">
+                    <img src="assets/moth.jpeg"
+                        class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition duration-500"
+                        alt="Moth">
+                </div>
+                <div class="bg-accent text-black p-3 mt-0">
+                    <h2 class="font-display text-2xl md:text-4xl leading-none">08 / MIRAGE</h2>
+                </div>
+            </div>
+
+            <!-- 09 / ABYSS -->
+            <div class="group">
+                <div class="overflow-hidden border border-white/20">
+                    <img src="assets/octoman.jpeg"
+                        class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition duration-500"
+                        alt="Octopus">
+                </div>
+                <div class="bg-accent text-black p-3 mt-0">
+                    <h2 class="font-display text-2xl md:text-4xl leading-none">09 / ABYSS</h2>
+                </div>
+            </div>
+
+            <!-- 10 / WEB (Staggered offset) -->
+            <div class="group md:mt-40">
+                <div class="overflow-hidden border border-white/20">
+                    <img src="assets/spider.jpeg"
+                        class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition duration-500"
+                        alt="Spider">
+                </div>
+                <div class="bg-accent text-black p-3 mt-0">
+                    <h2 class="font-display text-2xl md:text-4xl leading-none">10 / WEB</h2>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER / FINAL SCENE -->
+    <section id="contact"
+        class="min-h-screen w-full flex flex-col items-center justify-center px-6 border-t border-white/10">
+        <h1 class="font-display text-6xl md:text-9xl leading-[0.85] text-center scroll-reveal">
+            THANK YOU<br>FOR<br>
+            <span class="text-accent">VISITING.</span>
+        </h1>
+        <div class="mt-12 text-center scroll-reveal">
+            <p class="text-lg text-text/80">LET'S CREATE SOMETHING BEAUTIFUL TOGETHER.</p>
+            <div class="mt-8 flex flex-col md:flex-row gap-4">
+                <a href="mailto:micarte.aaron08@gmail.com"
+                    class="border border-white/30 px-8 py-4 hover:bg-accent hover:border-accent transition text-center">EMAIL
+                    →</a>
+                <a href="https://www.instagram.com/yano.aaronn/" target="_blank"
+                    class="border border-white/30 px-8 py-4 hover:bg-accent hover:border-accent transition text-center">INSTAGRAM
+                    →</a>
+                <a href="https://t.me/rnynmcrt" target="_blank"
+                    class="border border-white/30 px-8 py-4 hover:bg-accent hover:border-accent transition text-center">TELEGRAM
+                    →</a>
+            </div>
+            <div class="mt-20 text-xs text-text/40 tracking-widest">AARON MICARTE / 2026</div>
+        </div>
+    </section>
+
+    <script>
+        // Boot Sequence
+        let progress = 0;
+        const bootText = document.getElementById('boot-text');
+        const bootBar = document.getElementById('boot-bar');
+        const bootScreen = document.getElementById('boot-screen');
+        const bootInterval = setInterval(() => {
+            progress += Math.random() * 15;
+            if (progress > 100) progress = 100;
+            bootText.innerText = Math.floor(progress) + '%';
+            bootBar.style.width = progress + '%';
+            if (progress >= 100) {
+                clearInterval(bootInterval);
+                setTimeout(() => {
+                    bootScreen.style.opacity = '0';
+                    setTimeout(() => bootScreen.style.display = 'none', 1000);
+                }, 300);
+            }
+        }, 150);
+
+        // Simple Scroll Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
